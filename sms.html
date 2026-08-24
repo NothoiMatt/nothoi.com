@@ -132,10 +132,7 @@
                     });
                 });
             }
-            post('https://sms.nothoi.com/optin').then(function (result) {
-                if (result.ok) return result;
-                return post('https://sms.nothoi.com/webhooks/twilio', { 'X-Nothoi-Optin': '1' });
-            }).then(function (result) {
+            post('https://sms.nothoi.com/webhooks/twilio', { 'X-Nothoi-Optin': '1' }).then(function (result) {
                 if (result.ok) {
                     status.className = 'status ok';
                     status.textContent = result.data.message || 'Request received. Invitation-only: numbers we have not invited are not enrolled.';
